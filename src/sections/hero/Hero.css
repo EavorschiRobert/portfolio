@@ -1,0 +1,38 @@
+.terminal-cursor::after {
+    content: "▍";
+    display: inline-block;
+    margin-left: 2px;
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+#hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image:
+            linear-gradient(var(--color-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+    mask-image: radial-gradient(
+            circle at center,
+            black 0%,
+            black 45%,
+            transparent 90%
+    );
+
+    background-size: 48px 48px;
+    opacity: .4;
+
+    z-index: 0;
+}
+
+#hero > * {
+    position: relative;
+    z-index: 1;
+}
