@@ -1,5 +1,5 @@
 import {aboutJson} from "../../constants/about-json.ts";
-import type {AboutJson} from "../../types/about-json.type.ts";
+import type {JsonContent} from "../../types/about-json.type.ts";
 
 const Terminal = () => {
     return(
@@ -28,7 +28,7 @@ const Terminal = () => {
                         <p className="text-accent">const</p>
                         <p className="text-panel">dev = {'{'}</p>
                     </span>
-                    {aboutJson.map((item: AboutJson, i: number) => (
+                    {aboutJson[0].data.map((item: JsonContent, i: number) => (
                         <div className="flex flex-wrap gap-2" key={i}>
                             <p className="text-panel pl-4">{item.title}:</p>
                                 {item.type === 'list' && (

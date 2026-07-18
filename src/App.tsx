@@ -6,29 +6,33 @@ import Progetti from "./sections/progetti/Progetti.tsx";
 import Esperienza from "./sections/esperienza/Esperienza.tsx";
 import SectionLayout from "./components/layout/SectionLayout.tsx";
 import About from "./sections/about/About.tsx";
+import {LanguageProvider} from "./context/language-context.tsx";
 
 function App() {
   return (
-    <div className="bg-background w-full h-full">
-      <div className="px-12 py-4">
-        <Navbar />
-      </div>
-      <SectionLayout className="bg-background w-full">
-        <Hero />
-      </SectionLayout>
-      <SectionLayout className="bg-background w-full">
-          <About />
-      </SectionLayout>
-      <SectionLayout className="bg-background w-full">
-        <Skills />
-      </SectionLayout>
-      <SectionLayout className="bg-background w-full">
-        <Progetti />
-      </SectionLayout>
-      <SectionLayout className="bg-background w-full">
-        <Esperienza />
-      </SectionLayout>
-    </div>
+      <LanguageProvider>
+          <div className="bg-background w-full h-full">
+              <div className="px-12 py-4">
+                  <Navbar />
+              </div>
+              <SectionLayout className="bg-background w-full">
+                  <Hero />
+              </SectionLayout>
+              <SectionLayout className="bg-background w-full">
+                  <About />
+              </SectionLayout>
+              <SectionLayout className="bg-background w-full">
+                  <Skills />
+              </SectionLayout>
+              <SectionLayout className="bg-background w-full">
+                  <Progetti />
+              </SectionLayout>
+              <SectionLayout className="bg-background w-full">
+                  <Esperienza />
+              </SectionLayout>
+          </div>
+      </LanguageProvider>
+
   )
 }
 

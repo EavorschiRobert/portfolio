@@ -1,8 +1,10 @@
 import './Navbar.css';
 import {navbarLinks} from "../../constants/navbar-links.ts";
 import Hamburger from "../Hamburger/Hamburger.tsx";
+import {useLanguage} from "../../context/language-context.tsx";
 
 const Navbar = () => {
+    const { language, setLanguage } = useLanguage();
 
     return (
         <nav>
@@ -16,15 +18,19 @@ const Navbar = () => {
             {/* Desktop */}
             <div className="hidden md:flex items-center gap-8 text-sm">
                 <ul className="flex gap-8 text-muted">
-                    {navbarLinks.map((link) => (
+                    {
+                        navbarLinks.find((item) => item.location === language)?.data.map((link) => (
                         <li key={link.url}>
                             <a href={link.url}>{link.title}</a>
                         </li>
                     ))}
                 </ul>
-
+                <div className="lang-switch">
+                    <button className={`lang-btn ${language === 'ita' ? 'active' : ''}`} data-lang="it" onClick={() => setLanguage('ita')}>ITA</button>
+                    <button className={`lang-btn ${language === 'eng' ? 'active' : ''}`} data-lang="en" onClick={() => setLanguage('eng')}>ENG</button>
+                </div>
                 <a className="button-primary px-4 font-code">
-                    $ contattami
+                    $ {language === 'eng' ? 'contact-me' : 'contattami'}
                 </a>
             </div>
 

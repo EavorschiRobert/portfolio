@@ -32,7 +32,7 @@ const About = () => {
                           justify-between
                           gap-8"
                     >
-                        {counterAttivita.map((item, index) => (
+                        {counterAttivita[0].data.map((item, index) => (
                             <span className="border-t border-line" key={index}>
                                     <p className="text-accent text-2xl md:text-4xl font-heading font-bold mt-4">{item.title}</p>
                                     <p className="break-all text-sm md:text-xl">{item.content}</p>
