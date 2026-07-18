@@ -19,6 +19,11 @@ export const counterAttivita: AboutJson[] = [
                 content: 'TEAM GUIDATO',
                 type: 'string'
             },
+            {
+                title: '99%',
+                content: 'UPTIME MEDIO',
+                type: 'string'
+            },
         ]
     },
     {
@@ -37,6 +42,11 @@ export const counterAttivita: AboutJson[] = [
             {
                 title: '1',
                 content: 'TEAM LEAD',
+                type: 'string'
+            },
+            {
+                title: '99%',
+                content: 'AVG. UPTIME',
                 type: 'string'
             },
         ]
