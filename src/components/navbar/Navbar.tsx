@@ -16,7 +16,7 @@ const Navbar = () => {
                 <p>eavorschi</p>
             </span>
             {/* Desktop */}
-            <div className="hidden md:flex items-center gap-8 text-sm">
+            <div className="hidden lg:flex items-center gap-8 text-sm">
                 <ul className="flex gap-8 text-muted">
                     {
                         navbarLinks.find((item) => item.location === language)?.data.map((link) => (
@@ -26,7 +26,7 @@ const Navbar = () => {
                     ))}
                 </ul>
                 <div className="lang-switch">
-                    <button className={`lang-btn ${language === 'ita' ? 'active' : ''}`} data-lang="it" onClick={() => setLanguage('ita')}>ITA</button>
+                    <button className={`lang-btn ${language === 'ita' ? 'active' : ''}`} data-lang="it" onClick={() => setLanguage('ita')}>IT</button>
                     <button className={`lang-btn ${language === 'eng' ? 'active' : ''}`} data-lang="en" onClick={() => setLanguage('eng')}>ENG</button>
                 </div>
                 <a className="button-primary px-4 font-code">

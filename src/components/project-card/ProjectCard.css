@@ -1,0 +1,17 @@
+.cover {
+    height: 170px;
+    background: linear-gradient(135deg, #efe9da, #e3dcc8);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-line);
+    font-size: 3rem;
+    overflow: hidden;
+}
+.cover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 20%, rgba(193, 68, 14, .12), transparent 60%);
+}

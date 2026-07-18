@@ -1,0 +1,15 @@
+button:hover {
+    border-color: var(--color-accent);
+}
+.active {
+    background-color: var(--color-accent);
+    color: var(--color-panel);
+}
+.active:hover {
+    color: var(--color-terminal-bg);
+}
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}

@@ -1,12 +1,14 @@
 import './Hamburger.css';
 import {useState} from "react";
 import {navbarLinks} from "../../constants/navbar-links.ts";
+import {useLanguage} from "../../context/language-context.tsx";
 
 export type HamburgerProps = {
     isActive: boolean;
     setIsActive: () => void;
 }
 const Hamburger = () => {
+    const {language, setLanguage} = useLanguage();
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
     const handleChangeMenu = () => {
@@ -17,16 +19,16 @@ const Hamburger = () => {
     return (
         <>
             <button
-                className={`flex md:hidden hamburger ${isMenuOpen ? "active" : ""}`}
+                className={`flex lg:hidden hamburger ${isMenuOpen ? "active" : ""}`}
                 onClick={() => handleChangeMenu()}>
                 <span className="line"></span>
                 <span className="line"></span>
                 <span className="line"></span>
             </button>
             {isMenuOpen && (
-                <div className="absolute top-full left-0 w-full bg-background mt-2 rounded-4xl shadow-2xl md:hidden">
+                <div className="absolute top-full left-0 w-full bg-background mt-2 rounded-4xl shadow-2xl lg:hidden">
                     <ul className="flex flex-col py-6">
-                        {navbarLinks.map((link) => (
+                        {navbarLinks.find(item => item.location === language)?.data.map((link) => (
                             <li key={link.url}>
                                 <a
                                     href={link.url}
@@ -37,9 +39,15 @@ const Hamburger = () => {
                                 </a>
                             </li>
                         ))}
+                        <div className="px-4">
+                            <div className="lang-switch w-1/3">
+                                <button className={`lang-btn ${language === 'ita' ? 'active' : ''}`} data-lang="it" onClick={() => setLanguage('ita')}>IT</button>
+                                <button className={`lang-btn ${language === 'eng' ? 'active' : ''}`} data-lang="en" onClick={() => setLanguage('eng')}>ENG</button>
+                            </div>
 
+                        </div>
                         <a
-                            className="button-primary mx-6 mt-4 text-center"
+                            className="flex-1 button-primary mx-6 mt-4 text-center"
                             onClick={() => handleChangeMenu()}
                         >
                             $ contattami
