@@ -7,15 +7,18 @@ export type SectionLayoutProps = {
 const SectionLayout = ({children, className = ""}: SectionLayoutProps) => {
     return (
         <div className={`
-        flex
-        w-full
-        h-full
-        justify-center
-        items-center
-        px-24
-        layout-section
-        border-b
-        border-line
+            flex
+            w-full
+            min-h-screen
+            justify-center
+            items-start
+            py-24
+            px-6
+            md:px-12
+            lg:px-24
+            lg:items-center
+            border-b
+            border-line
         ${className}
         `}>
             {children}

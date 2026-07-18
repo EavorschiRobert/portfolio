@@ -13,21 +13,21 @@ function App() {
       <div className="px-12 py-4">
         <Navbar />
       </div>
-      <SectionLayout className="bg-background w-full h-full">
+      <SectionLayout className="bg-background w-full">
         <Hero />
       </SectionLayout>
-      <SectionLayout className="bg-background w-full h-full">
+      <SectionLayout className="bg-background w-full">
           <About />
       </SectionLayout>
-      <div className="bg-background w-full h-full">
+      <SectionLayout className="bg-background w-full h-full">
         <Skills />
-      </div>
-      <div className="bg-background w-full h-full">
+      </SectionLayout>
+      <SectionLayout className="bg-background w-full h-full">
         <Progetti />
-      </div>
-      <div className="bg-background w-full h-full">
+      </SectionLayout>
+      <SectionLayout className="bg-background w-full h-full">
         <Esperienza />
-      </div>
+      </SectionLayout>
     </div>
   )
 }

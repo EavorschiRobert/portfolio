@@ -1,4 +1,4 @@
-export const technologies = [
+export const technologies: string[] = [
     'Java',
     'JavaScript',
     'TypeScript',
