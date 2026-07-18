@@ -19,13 +19,13 @@ function App() {
       <SectionLayout className="bg-background w-full">
           <About />
       </SectionLayout>
-      <SectionLayout className="bg-background w-full h-full">
+      <SectionLayout className="bg-background w-full">
         <Skills />
       </SectionLayout>
-      <SectionLayout className="bg-background w-full h-full">
+      <SectionLayout className="bg-background w-full">
         <Progetti />
       </SectionLayout>
-      <SectionLayout className="bg-background w-full h-full">
+      <SectionLayout className="bg-background w-full">
         <Esperienza />
       </SectionLayout>
     </div>

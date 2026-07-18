@@ -1,4 +1,3 @@
-import './About.css';
 import Terminal from "../../components/terminal/Terminal.tsx";
 import {counterAttivita} from "../../constants/counter-attivita.ts";
 

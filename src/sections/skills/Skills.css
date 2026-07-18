@@ -1,0 +1,11 @@
+#skills {
+    width: 100%;
+}
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+#skill-card:hover {
+    border-color: var(--color-accent);
+}
