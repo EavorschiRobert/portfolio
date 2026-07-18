@@ -10,6 +10,10 @@ export const navbarLinks: NavbarLinks[] = [
         url: '#skills',
     },
     {
+        title: 'istruzione',
+        url: '#education',
+    },
+    {
         title: 'progetti',
         url: '#progetti',
     },
