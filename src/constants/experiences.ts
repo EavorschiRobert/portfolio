@@ -8,7 +8,7 @@ export const experiences: ExperienceLanguageView[] = [
                 title: 'Sistemi Informativi',
                 fromDate: 'Dic 2023',
                 toDate: 'Presente',
-                imageUrl: 'public/sistemi.jpeg',
+                imageUrl: 'sistemi.jpeg',
                 tech: [
                     'Java 8/21', 'Spring Boot 3/4',
                     'OracleDB', 'PostgreSQL', 'MongoDB',
