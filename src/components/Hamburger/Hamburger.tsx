@@ -40,18 +40,20 @@ const Hamburger = () => {
                             </li>
                         ))}
                         <div className="px-4">
-                            <div className="lang-switch w-1/3">
+                            <div className="lang-switch w-25">
                                 <button className={`lang-btn ${language === 'ita' ? 'active' : ''}`} data-lang="it" onClick={() => setLanguage('ita')}>IT</button>
                                 <button className={`lang-btn ${language === 'eng' ? 'active' : ''}`} data-lang="en" onClick={() => setLanguage('eng')}>ENG</button>
                             </div>
-
                         </div>
-                        <a
-                            className="flex-1 button-primary mx-6 mt-4 text-center"
-                            onClick={() => handleChangeMenu()}
-                        >
-                            $ contattami
-                        </a>
+                        <div className="w-full flex justify-center">
+                            <a
+                                className="button-primary mx-6 mt-4 text-center w-50"
+                                onClick={() => handleChangeMenu()}
+                            >
+                                $ contattami
+                            </a>
+                        </div>
+
                     </ul>
                 </div>
             )}
