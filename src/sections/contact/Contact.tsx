@@ -37,13 +37,35 @@ const Contact = ({index, italianTitle, englishTitle}: SectionProps) => {
                     <span className="font-code p-4">
                         <span className="text-terminal-fg flex gap-2 break-word">
                             <p className="text-accent">$</p>
-                            <p>
-                                send-email --to robert --subject "Ciao!"
-                                <em className="text-accent terminal-cursor"></em>
-                            </p>
+                            {language === 'ita'
+                                ? (
+                                    <p>
+                                        send-email --to robert --subject "Ciao!"
+                                        <em className="text-accent terminal-cursor"></em>
+                                    </p>
+                                )
+                                : (
+                                    <p>
+                                        send-email --to robert --subject "Hello!"
+                                        <em className="text-accent terminal-cursor"></em>
+                                    </p>
+                                )}
+
                         </span>
-                        <p className="text-muted">Apertura del client di posta...</p>
-                        <a className="send-mail text-string cursor-pointer" href="mailto:eavorschirobertdaniel@gmail.com">→ esegui: eavorschirobertdaniel@gmail.com</a>
+                        {language === 'ita'
+                        ? (
+                            <>
+                                <p className="text-muted">Apertura del client di posta...</p>
+                                <a className="send-mail text-string cursor-pointer" href="mailto:eavorschirobertdaniel@gmail.com">→ esegui: eavorschirobertdaniel@gmail.com</a>
+                            </>
+                            )
+                        : (
+                            <>
+                                <p className="text-muted">Opening mail client…</p>
+                                <a className="send-mail text-string cursor-pointer" href="mailto:eavorschirobertdaniel@gmail.com">→ run: eavorschirobertdaniel@gmail.com</a>
+                            </>
+                            )}
+
                     </span>
                 </Terminal>
             </div>

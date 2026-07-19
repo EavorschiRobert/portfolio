@@ -9,6 +9,7 @@ import About from "./sections/about/About.tsx";
 import {LanguageProvider} from "./context/language-context.tsx";
 import Contact from "./sections/contact/Contact.tsx";
 import Footer from "./components/footer/Footer.tsx";
+import ProgressBar from "./components/progress-bar/ProgressBar.tsx";
 
 export const sections = [
     {
@@ -51,6 +52,7 @@ function App() {
     return (
         <LanguageProvider>
             <div className="bg-background w-full h-full">
+                <ProgressBar />
                 <div className="px-12 py-4">
                     <Navbar/>
                 </div>
