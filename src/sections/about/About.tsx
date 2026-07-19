@@ -5,11 +5,12 @@ import SectionTitle from "../../components/section-title/SectionTitle.tsx";
 import type {SectionProps} from "../../types/section-props.ts";
 import {aboutJson} from "../../constants/about-json.ts";
 import type {JsonContent} from "../../types/about-json.type.ts";
+import SectionWrapper from "../../components/layout/SectionLayout.tsx";
 
 const About = ({index, italianTitle, englishTitle}: SectionProps) => {
     const {language} = useLanguage();
     return(
-        <div id="about">
+        <div>
             <SectionTitle title={language === 'ita' ? `${index} - ${italianTitle}` : `${index} - ${englishTitle}`}  subtitle={'About me'}/>
             <div className="w-full flex flex-col justify-between items-start gap-4 lg:gap-12 lg:flex-row">
                 <div className="w-full lg:w-1/2">
@@ -103,4 +104,4 @@ const About = ({index, italianTitle, englishTitle}: SectionProps) => {
         </div>
     )
 }
-export default About;
+export default SectionWrapper(About, "about");

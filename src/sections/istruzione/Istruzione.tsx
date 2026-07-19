@@ -4,11 +4,12 @@ import {useLanguage} from "../../context/language-context.tsx";
 import './Istruzione.css';
 import {education} from "../../constants/education.ts";
 import type {Education} from "../../types/education.type.ts";
+import SectionWrapper from "../../components/layout/SectionLayout.tsx";
 
 const Istruzione = ({index, italianTitle, englishTitle}: SectionProps) => {
     const {language} = useLanguage();
     return(
-        <div id="education">
+        <div>
             <SectionTitle title={language === 'ita' ? `${index} - ${italianTitle}` : `${index} - ${englishTitle}`}  subtitle={'Education'}/>
             <div className="education-grid">
                 {education.find(item => item.location === language)?.data.map((item: Education) => (
@@ -26,4 +27,4 @@ const Istruzione = ({index, italianTitle, englishTitle}: SectionProps) => {
         </div>
     )
 }
-export default Istruzione;
+export default SectionWrapper(Istruzione, "education");

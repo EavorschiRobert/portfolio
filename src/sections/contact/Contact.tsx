@@ -2,11 +2,12 @@ import type {SectionProps} from "../../types/section-props.ts";
 import {useLanguage} from "../../context/language-context.tsx";
 import './Contact.css';
 import Terminal from "../../components/terminal/Terminal.tsx";
+import SectionWrapper from "../../components/layout/SectionLayout.tsx";
 
 const Contact = ({index, italianTitle, englishTitle}: SectionProps) => {
     const {language} = useLanguage();
     return (
-        <div id="contact" className="
+        <div className="
         h-full w-full flex flex-col
         lg:flex-row justify-between gap-8
         items-center"
@@ -72,4 +73,4 @@ const Contact = ({index, italianTitle, englishTitle}: SectionProps) => {
         </div>
     )
 }
-export default Contact;
+export default SectionWrapper(Contact, "contact");

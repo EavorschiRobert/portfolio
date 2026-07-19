@@ -3,11 +3,12 @@ import {technologies} from "../../constants/technologies.ts";
 import Technology from "../../components/technology/Technology.tsx";
 import {useLanguage} from "../../context/language-context.tsx";
 import type {SectionProps} from "../../types/section-props.ts";
+import SectionWrapper from "../../components/layout/SectionLayout.tsx";
 
 const Hero = (_: SectionProps) => {
     const { language } = useLanguage();
     return(
-        <div id="hero" className="w-full h-full flex justify-center items-start flex-col">
+        <div className="w-full h-full flex justify-center items-start flex-col">
             <p className="text-accent font-code terminal-cursor md:text-sm text-xs">$ whoami</p>
             <p className="font-heading leading-none md:text-6xl text-4xl">
                 Eavorschi Robert Daniel
@@ -44,4 +45,4 @@ const Hero = (_: SectionProps) => {
         </div>
     )
 }
-export default Hero;
+export default SectionWrapper(Hero, 'hero');

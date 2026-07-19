@@ -1,28 +1,35 @@
 import './SectionLayout.css';
+import * as React from "react";
 
-export type SectionLayoutProps = {
-    children: React.ReactNode;
-    className?: string;
+type SectionWrapperProps = {
+    id: string;
+    italianTitle: string;
+    englishTitle: string;
 }
-const SectionLayout = ({children, className = ""}: SectionLayoutProps) => {
-    return (
-        <section className={`
-            flex
-            w-full
-            min-h-screen
-            justify-center
-            items-start
-            py-24
-            px-6
-            md:px-12
-            lg:px-24
-            lg:items-center
-            border-b
-            border-line
-        ${className}
-        `}>
-            {children}
-        </section>
-    )
+
+function SectionWrapper<T extends SectionWrapperProps>(Component: React.ComponentType<T>, id: string) {
+    return (props: T) => {
+        return (
+            <span
+                className={`
+                    flex
+                    w-full
+                    min-h-screen
+                    justify-center
+                    items-start
+                    py-24
+                    px-6
+                    md:px-12
+                    lg:px-24
+                    lg:items-center
+                    border-b
+                    bg-background
+                    border-line
+                `}
+                id={id}>
+                <Component {...props} />
+            </span>
+        )
+    }
 }
-export default SectionLayout;
+export default SectionWrapper;

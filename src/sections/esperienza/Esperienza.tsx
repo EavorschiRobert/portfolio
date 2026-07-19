@@ -3,15 +3,20 @@ import './Esperienza.css';
 import {useLanguage} from "../../context/language-context.tsx";
 import {experiences} from "../../constants/experiences.ts";
 import type {SectionProps} from "../../types/section-props.ts";
+import SectionWrapper from "../../components/layout/SectionLayout.tsx";
+import Card from "../../components/card/Card.tsx";
+import Modal from "../../components/modal/Modal.tsx";
+import {useState} from "react";
+import type {Experience} from "../../types/experience.type.ts";
 
 const Esperienza = ({index, italianTitle, englishTitle}: SectionProps) => {
     const {language} = useLanguage();
-
+    const [modalContent, setModalContent] = useState<Experience | undefined>(undefined);
     return(
-        <div id="esperienza" className="w-full">
+        <div className="w-full">
             <SectionTitle title={language === 'ita' ? `${index} - ${italianTitle}` : `${index} - ${englishTitle}`}  subtitle={'Experience'}/>
             {experiences.find(item => item.location === language)?.data.map((item, i) => (
-                <div className="bg-panel p-8 rounded-2xl border border-line" key={i}>
+                <Card key={i}>
                     <div className="flex-col lg:flex-row items-center justify-between">
                         <div className="flex items-center gap-2">
                             <span className="">
@@ -28,14 +33,41 @@ const Esperienza = ({index, italianTitle, englishTitle}: SectionProps) => {
                             <div className="t-item reveal visible" key={step.title}>
                                 <div className="text-accent text-xs">{step.fromDate} - {step.toDate}</div>
                                 <p className="text-2xl font-bold font-heading">{step.title}</p>
-                                <p className="text-muted">{step.description}</p>
+                                <p className="text-muted">{step.shortDescription}</p>
                             </div>
                         ))}
                     </div>
-                </div>
+                    <div className="flex w-full justify-end">
+                        <p className="btn-action text-sm text-accent cursor-pointer" onClick={() => setModalContent(() => item)}>Dettagli →</p>
+                    </div>
+                </Card>
+
             ))}
+            {modalContent&& (
+                <Modal title={modalContent.title}
+                       subtitle={`${modalContent.fromDate} - ${modalContent.toDate}`}
+                       onClose={() => setModalContent(undefined)}>
+                    <div>
+                        {modalContent.steps.map((item, index) => (
+                            <div key={index} className="mt-4">
+                                <span className="flex lg:gap-4 flex-col lg:flex-row mb-4 lg:items-center">
+                                    <p className="font-bold text-2xl font-heading">{item.title}</p>
+                                    <p className="text-xs text-accent">{item.fromDate} - {item.toDate}</p>
+                                </span>
+                                {item.description.map((item, j) => (
+                                    <span key={`${index}-${j}`}>
+                                        <p className="text-muted text-sm">{item}</p>
+                                        <br/>
+                                    </span>
+
+                                ))}
+                            </div>
+                        ))}
+                    </div>
+                </Modal>
+            )}
 
         </div>
     )
 }
-export default Esperienza;
+export default SectionWrapper(Esperienza, "esperienza");

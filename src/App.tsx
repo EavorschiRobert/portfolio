@@ -4,7 +4,6 @@ import Hero from "./sections/hero/Hero.tsx";
 import Skills from "./sections/skills/Skills.tsx";
 import Progetti from "./sections/progetti/Progetti.tsx";
 import Esperienza from "./sections/esperienza/Esperienza.tsx";
-import SectionLayout from "./components/layout/SectionLayout.tsx";
 import About from "./sections/about/About.tsx";
 import {LanguageProvider} from "./context/language-context.tsx";
 import Contact from "./sections/contact/Contact.tsx";
@@ -67,11 +66,12 @@ function App() {
                     const Component = section.component;
 
                     return (
-                        <SectionLayout key={section.id} className="bg-background w-full">
-                            <Component index={`0${index}`}
-                                       englishTitle={section.englishTitle!}
-                                       italianTitle={section.italianTitle!}/>
-                        </SectionLayout>
+                        <Component
+                            key={section.id}
+                            id={section.id}
+                            index={`0${index}`}
+                            englishTitle={section.englishTitle!}
+                            italianTitle={section.italianTitle!}/>
                     );
                 })}
                 <div className="bg-background w-full h-25">

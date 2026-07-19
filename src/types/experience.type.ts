@@ -8,7 +8,8 @@ export interface Experience {
         title: string;
         fromDate: string;
         toDate: string;
-        description: string;
+        shortDescription: string;
+        description: string[];
     }[]
 }
 export interface ExperienceLanguageView {
