@@ -36,3 +36,7 @@
 .hamburger.active {
     background: transparent !important;
 }
+.menu {
+    background: rgba(255, 253, 248, .98);
+    backdrop-filter: blur(16px);
+}

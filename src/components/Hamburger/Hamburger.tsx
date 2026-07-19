@@ -26,7 +26,7 @@ const Hamburger = () => {
                 <span className="line"></span>
             </button>
             {isMenuOpen && (
-                <div className="absolute top-full left-0 w-full bg-background mt-2 rounded-4xl shadow-2xl lg:hidden">
+                <div className="menu absolute top-full left-0 w-full bg-background mt-2 rounded-4xl shadow-2xl lg:hidden">
                     <ul className="flex flex-col py-6">
                         {navbarLinks.find(item => item.location === language)?.data.map((link) => (
                             <li key={link.url}>
