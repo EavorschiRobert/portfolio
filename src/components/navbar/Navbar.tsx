@@ -29,7 +29,7 @@ const Navbar = () => {
                     <button className={`lang-btn ${language === 'ita' ? 'active' : ''}`} data-lang="it" onClick={() => setLanguage('ita')}>IT</button>
                     <button className={`lang-btn ${language === 'eng' ? 'active' : ''}`} data-lang="en" onClick={() => setLanguage('eng')}>ENG</button>
                 </div>
-                <a className="button-primary px-4 font-code">
+                <a className="button-primary px-4 font-code" href="#contact">
                     $ {language === 'eng' ? 'contact-me' : 'contattami'}
                 </a>
             </div>

@@ -2,13 +2,14 @@ import SectionTitle from "../../components/section-title/SectionTitle.tsx";
 import './Esperienza.css';
 import {useLanguage} from "../../context/language-context.tsx";
 import {experiences} from "../../constants/experiences.ts";
+import type {SectionProps} from "../../types/section-props.ts";
 
-const Esperienza = () => {
+const Esperienza = ({index, italianTitle, englishTitle}: SectionProps) => {
     const {language} = useLanguage();
 
     return(
         <div id="esperienza" className="w-full">
-            <SectionTitle itaTitle={'04 - esperienza'} engTitle={'04 - experience'} subtitle={'Experience'}/>
+            <SectionTitle title={language === 'ita' ? `${index} - ${italianTitle}` : `${index} - ${englishTitle}`}  subtitle={'Experience'}/>
             {experiences.find(item => item.location === language)?.data.map((item, i) => (
                 <div className="bg-panel p-8 rounded-2xl border border-line" key={i}>
                     <div className="flex items-center justify-between">

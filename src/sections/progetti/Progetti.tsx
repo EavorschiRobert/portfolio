@@ -6,14 +6,15 @@ import './Progetti.css';
 import {projectView} from "../../constants/project-view.ts";
 import {ProjectCard} from "../../components/project-card/ProjectCard.tsx";
 import SectionTitle from "../../components/section-title/SectionTitle.tsx";
+import type {SectionProps} from "../../types/section-props.ts";
 
-const Progetti = () => {
+const Progetti = ({index, italianTitle, englishTitle}: SectionProps) => {
     const {language} = useLanguage();
     const [activeFilter, setActiveFilter] = useState<'all' | 'pro' | 'personal'>('all');
     return(
         <div id="progetti" className="w-full flex justify-start flex-col">
-            <SectionTitle itaTitle={'03 - lavori'} engTitle={'03 - work'} subtitle={'Selected projects'}/>
 
+            <SectionTitle title={language === 'ita' ? `${index} - ${italianTitle}` : `${index} - ${englishTitle}`}  subtitle={'Selected projects'}/>
             <div className="flex gap-8">
                 {
                     workButtonsFilter.find(item => item.location === language)?.data.map((item: Filter) => (

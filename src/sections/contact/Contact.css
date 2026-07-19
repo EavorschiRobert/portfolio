@@ -1,0 +1,10 @@
+.send-mail {
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: var(--color-string);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 10px;
+}
+.send-mail:hover {
+    color: var(--color-string);
+}

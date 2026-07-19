@@ -2,8 +2,9 @@ import './Hero.css';
 import {technologies} from "../../constants/technologies.ts";
 import Technology from "../../components/technology/Technology.tsx";
 import {useLanguage} from "../../context/language-context.tsx";
+import type {SectionProps} from "../../types/section-props.ts";
 
-const Hero = () => {
+const Hero = (_: SectionProps) => {
     const { language } = useLanguage();
     return(
         <div id="hero" className="w-full h-full flex justify-center items-start flex-col">
