@@ -1,22 +1,13 @@
 import Terminal from "../../components/terminal/Terminal.tsx";
 import {counterAttivita} from "../../constants/counter-attivita.ts";
 import {useLanguage} from "../../context/language-context.tsx";
+import SectionTitle from "../../components/section-title/SectionTitle.tsx";
 
 const About = () => {
     const {language} = useLanguage();
     return(
         <div id="about">
-            <div className="w-full">
-                {language === 'ita'
-                ? (
-                        <p className="text-accent font-code text-sm">01 - chi sono</p>
-                    )
-                : (
-                        <p className="text-accent font-code text-sm">01 - about me</p>
-                    )}
-
-                <p className="font-heading text-3xl md:text-6xl mb-6">About me</p>
-            </div>
+            <SectionTitle itaTitle={'01 - chi sono'} engTitle={'01 - about me'} subtitle={'About me'}/>
             <div className="w-full flex flex-col justify-between items-start gap-4 lg:gap-12 lg:flex-row">
                 <div className="w-full lg:w-1/2">
                     <Terminal/>

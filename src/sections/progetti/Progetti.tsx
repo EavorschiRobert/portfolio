@@ -5,29 +5,15 @@ import type {Filter} from "../../types/work-button-filter.type.ts";
 import './Progetti.css';
 import {projectView} from "../../constants/project-view.ts";
 import {ProjectCard} from "../../components/project-card/ProjectCard.tsx";
+import SectionTitle from "../../components/section-title/SectionTitle.tsx";
 
 const Progetti = () => {
     const {language} = useLanguage();
     const [activeFilter, setActiveFilter] = useState<'all' | 'pro' | 'personal'>('all');
     return(
         <div id="progetti" className="w-full flex justify-start flex-col">
-            <div className="w-full">
-                {
-                    language === 'ita'
-                        ? (
-                            <>
-                                <p className="text-accent font-code text-sm">03 - lavori</p>
-                                <p className="font-heading text-3xl md:text-6xl mb-6">Progetti selezionati</p>
-                            </>
-                        )
-                        : (
-                            <>
-                                <p className="text-accent font-code text-sm">03 - work</p>
-                                <p className="font-heading text-3xl md:text-6xl mb-6">Selected projects</p>
-                            </>
-                        )
-                }
-            </div>
+            <SectionTitle itaTitle={'03 - lavori'} engTitle={'03 - work'} subtitle={'Selected projects'}/>
+
             <div className="flex gap-8">
                 {
                     workButtonsFilter.find(item => item.location === language)?.data.map((item: Filter) => (

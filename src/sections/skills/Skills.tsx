@@ -1,26 +1,14 @@
 import {skills} from "../../constants/skills.ts";
 import type {SkillsType} from "../../types/skills.type.ts";
 import './Skills.css';
-import {useLanguage} from "../../context/language-context.tsx";
+import SectionTitle from "../../components/section-title/SectionTitle.tsx";
 
 const Skills = () => {
-    const {language} = useLanguage();
 
     return(
         <div id="skills">
-            <div className="w-full">
-                {
-                    language === 'ita'
-                    ? (
-                            <p className="text-accent font-code text-sm">02 - competenze</p>
-                        )
-                        : (
-                            <p className="text-accent font-code text-sm">02 - skills</p>
-                        )
-                }
+            <SectionTitle itaTitle={'02 - competenze'} engTitle={'02 - skills'} subtitle={'Tech stack'}/>
 
-                <p className="font-heading text-3xl md:text-6xl mb-6">Tech stack</p>
-            </div>
             <div className="skill-grid">
                 {skills.map((item: SkillsType) => (
                     <div id="skill-card" className="

@@ -1,0 +1,31 @@
+.timeline {
+    position: relative;
+    padding-left: 32px;
+    padding-top: 1rem;
+    border-left: 1px solid var(--color-line);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .7s ease, transform .7s ease;
+    transition-delay: var(--d, 0s);
+}
+.t-item {
+    position: relative;
+    padding-bottom: 1rem;
+}
+.t-item::before {
+    content: "";
+    position: absolute;
+    left: -38px;
+    top: 4px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 4px var(--color-accent-soft);
+}
