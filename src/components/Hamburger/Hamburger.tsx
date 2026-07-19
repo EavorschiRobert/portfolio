@@ -41,8 +41,14 @@ const Hamburger = () => {
                         ))}
                         <div className="px-4">
                             <div className="lang-switch w-25">
-                                <button className={`lang-btn ${language === 'ita' ? 'active' : ''}`} data-lang="it" onClick={() => setLanguage('ita')}>IT</button>
-                                <button className={`lang-btn ${language === 'eng' ? 'active' : ''}`} data-lang="en" onClick={() => setLanguage('eng')}>ENG</button>
+                                <button className={`lang-btn ${language === 'ita' ? 'active' : ''}`} data-lang="it" onClick={() => {
+                                    setLanguage('ita');
+                                    handleChangeMenu();
+                                }}>IT</button>
+                                <button className={`lang-btn ${language === 'eng' ? 'active' : ''}`} data-lang="en" onClick={() => {
+                                    setLanguage('eng');
+                                    handleChangeMenu();
+                                }}>ENG</button>
                             </div>
                         </div>
                         <div className="w-full flex justify-center">
