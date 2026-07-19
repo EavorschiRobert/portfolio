@@ -17,7 +17,7 @@ const About = ({index, italianTitle, englishTitle}: SectionProps) => {
                         <pre className="px-4
                             font-code
                             whitespace-pre-wrap
-                            break-words
+                            wrap-break-word
                             overflow-hidden"
                                 >
                             <p className="text-muted">// profile.ts</p>
@@ -45,7 +45,7 @@ const About = ({index, italianTitle, englishTitle}: SectionProps) => {
                     </Terminal>
                 </div>
 
-                <div className="lg:w-1/2 text-muted flex flex-col justify-between gap-8 ">
+                <div className="w-full lg:w-1/2 text-muted flex flex-col justify-between gap-8 wrap-break-word">
                     <span>
                         {
                             language === 'ita'
@@ -84,7 +84,9 @@ const About = ({index, italianTitle, englishTitle}: SectionProps) => {
 
                     </span>
 
-                    <div className="flex
+                    <div className="
+                            flex
+                            flex-wrap
                           justify-between
                           gap-8"
                     >

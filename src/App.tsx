@@ -10,6 +10,7 @@ import {LanguageProvider} from "./context/language-context.tsx";
 import Contact from "./sections/contact/Contact.tsx";
 import Footer from "./components/footer/Footer.tsx";
 import ProgressBar from "./components/progress-bar/ProgressBar.tsx";
+import Istruzione from "./sections/istruzione/Istruzione.tsx";
 
 export const sections = [
     {
@@ -21,6 +22,12 @@ export const sections = [
         italianTitle: "chi sono",
         englishTitle: "about me",
         component: About,
+    },
+    {
+        id: "education",
+        italianTitle: "istruzione",
+        englishTitle: "education",
+        component: Istruzione,
     },
     {
         id: "skills",

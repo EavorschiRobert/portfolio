@@ -15,7 +15,7 @@ const Progetti = ({index, italianTitle, englishTitle}: SectionProps) => {
         <div id="progetti" className="w-full flex justify-start flex-col">
 
             <SectionTitle title={language === 'ita' ? `${index} - ${italianTitle}` : `${index} - ${englishTitle}`}  subtitle={'Selected projects'}/>
-            <div className="flex gap-8">
+            <div className="flex flex-wrap gap-2">
                 {
                     workButtonsFilter.find(item => item.location === language)?.data.map((item: Filter) => (
                         <button key={item.filter} className={

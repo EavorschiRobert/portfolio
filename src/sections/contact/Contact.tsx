@@ -32,7 +32,7 @@ const Contact = ({index, italianTitle, englishTitle}: SectionProps) => {
                     </p>
                 </span>
             </div>
-            <div>
+            <div className="w-full lg:w-1/2">
                 <Terminal>
                     <span className="font-code p-4">
                         <span className="text-terminal-fg flex gap-2 break-word">

@@ -12,15 +12,15 @@ const Esperienza = ({index, italianTitle, englishTitle}: SectionProps) => {
             <SectionTitle title={language === 'ita' ? `${index} - ${italianTitle}` : `${index} - ${englishTitle}`}  subtitle={'Experience'}/>
             {experiences.find(item => item.location === language)?.data.map((item, i) => (
                 <div className="bg-panel p-8 rounded-2xl border border-line" key={i}>
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-8">
+                    <div className="flex-col lg:flex-row items-center justify-between">
+                        <div className="flex items-center gap-2">
                             <span className="">
-                                <img alt={item.title} src={item.imageUrl} className="h-12 w-12"/>
+                                <img alt={item.title} src={item.imageUrl} className="h-8 w-8 lg:h-12 lg:w-12"/>
                             </span>
-                            <p className="text-4xl font-bold font-heading">{item.title}</p>
+                            <p className="text-xl lg:text-4xl font-bold font-heading">{item.title}</p>
                         </div>
                         <div>
-                            <p className="text-accent font-code text-sm">{item.fromDate} - {item.toDate}</p>
+                            <p className="text-accent font-code text-xs lg:text-sm">{item.fromDate} - {item.toDate}</p>
                         </div>
                     </div>
                     <div className="timeline">
