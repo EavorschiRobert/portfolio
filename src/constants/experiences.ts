@@ -52,7 +52,7 @@ export const experiences: ExperienceLanguageView[] = [
                 title: 'Sistemi Informativi',
                 fromDate: 'Dec 2023',
                 toDate: 'Present',
-                imageUrl: 'src/assets/sistemi.jpeg',
+                imageUrl: 'sistemi.jpeg',
                 tech: [
                     'Java 8/21', 'Spring Boot 3/4',
                     'OracleDB', 'PostgreSQL', 'MongoDB',
