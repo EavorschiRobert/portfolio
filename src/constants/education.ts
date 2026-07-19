@@ -33,7 +33,7 @@ export const education: EducationLanguageView[] = [
         location: 'eng',
         data: [
             {
-                title: 'Laurea triennale in Informatica',
+                title: 'Bachelor\'s degree in Computer science',
                 fromDate: '2022',
                 toDate: 'Present',
                 subtitle: 'Università di Tor Vergata',
