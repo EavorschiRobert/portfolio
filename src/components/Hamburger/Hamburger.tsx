@@ -48,6 +48,7 @@ const Hamburger = () => {
                         <div className="w-full flex justify-center">
                             <a
                                 className="button-primary mx-6 mt-4 text-center w-50"
+                                href="#contact"
                                 onClick={() => handleChangeMenu()}
                             >
                                 $ contattami

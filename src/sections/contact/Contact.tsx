@@ -6,7 +6,11 @@ import Terminal from "../../components/terminal/Terminal.tsx";
 const Contact = ({index, italianTitle, englishTitle}: SectionProps) => {
     const {language} = useLanguage();
     return (
-        <div id="contact" className="h-full w-full flex flex-col lg:flex-row justify-between gap-8 items-center">
+        <div id="contact" className="
+        h-full w-full flex flex-col
+        lg:flex-row justify-between gap-8
+        items-center"
+        >
             <div>
                 <span>
                     <p className="text-accent font-code text-sm">{language === 'ita' ? `${index} - ${italianTitle}` : `${index} - ${englishTitle}`}</p>

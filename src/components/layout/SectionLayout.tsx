@@ -6,7 +6,7 @@ export type SectionLayoutProps = {
 }
 const SectionLayout = ({children, className = ""}: SectionLayoutProps) => {
     return (
-        <div className={`
+        <section className={`
             flex
             w-full
             min-h-screen
@@ -22,7 +22,7 @@ const SectionLayout = ({children, className = ""}: SectionLayoutProps) => {
         ${className}
         `}>
             {children}
-        </div>
+        </section>
     )
 }
 export default SectionLayout;
