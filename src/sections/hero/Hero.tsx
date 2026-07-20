@@ -7,22 +7,6 @@ import SectionWrapper from "../../components/layout/SectionLayout.tsx";
 import {motion} from 'motion/react';
 import {stagger, type Variants} from "motion";
 
-const mainVariant: Variants = {
-    hidden: {
-        opacity: 0,
-        x: 200,
-    },
-    visible: {
-        opacity: 1,
-        x: 0,
-        transition: {
-            duration: 2,
-            delay: 0.2,
-            ease: 'easeIn',
-        }
-    },
-};
-
 const listVariant: Variants = {
     hidden: {
     },
@@ -52,14 +36,11 @@ const Hero = (_: SectionProps) => {
     const { language } = useLanguage();
     return(
         <motion.div
-            variants={mainVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+
             className="w-full h-full flex justify-center items-start flex-col"
         >
             <p className="text-accent font-code terminal-cursor md:text-sm text-xs">$ whoami</p>
-            <h1 className="font-heading leading-none md:text-6xl text-4xl">
+            <h1 className="font-heading leading-none md:text-8xl text-4xl">
                 Eavorschi Robert Daniel
             </h1>
             <p className="leading-none font-heading text-accent italic md:text-6xl text-4xl">
@@ -101,4 +82,7 @@ const Hero = (_: SectionProps) => {
         </motion.div>
     )
 }
-export default SectionWrapper(Hero, 'hero');
+export default SectionWrapper(
+    Hero,
+    'hero',
+);
