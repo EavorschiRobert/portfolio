@@ -5,9 +5,9 @@ import {useLanguage} from "../../context/language-context.tsx";
 import type {SectionProps} from "../../types/section-props.ts";
 import SectionWrapper from "../../components/layout/SectionLayout.tsx";
 import {motion} from 'motion/react';
-import {stagger} from "motion";
+import {stagger, type Variants} from "motion";
 
-const mainVariant = {
+const mainVariant: Variants = {
     hidden: {
         opacity: 0,
         x: 200,
@@ -23,7 +23,7 @@ const mainVariant = {
     },
 };
 
-const listVariant = {
+const listVariant: Variants = {
     hidden: {
     },
     visible: {
@@ -33,7 +33,7 @@ const listVariant = {
         }
     },
 }
-const itemVariant = {
+const itemVariant: Variants = {
     hidden: {
         opacity: 0,
         y: 20,
@@ -88,9 +88,8 @@ const Hero = (_: SectionProps) => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                staggered={true}
                 className="flex flex-wrap gap-4 mt-8">
-                {technologies.map((technology, index) => (
+                {technologies.map((technology) => (
                     <motion.span
                         variants={itemVariant}
                         key={technology}>
