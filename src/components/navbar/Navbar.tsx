@@ -2,6 +2,7 @@ import './Navbar.css';
 import {navbarLinks} from "../../constants/navbar-links.ts";
 import Hamburger from "../Hamburger/Hamburger.tsx";
 import {useLanguage} from "../../context/language-context.tsx";
+import {motion} from 'motion/react';
 
 const Navbar = () => {
     const { language, setLanguage } = useLanguage();
@@ -20,9 +21,11 @@ const Navbar = () => {
                 <ul className="flex gap-8 text-muted">
                     {
                         navbarLinks.find((item) => item.location === language)?.data.map((link) => (
-                        <li key={link.url}>
+                        <motion.li
+                            whileHover={{scale: 1.2}}
+                            key={link.url}>
                             <a href={link.url}>{link.title}</a>
-                        </li>
+                        </motion.li>
                     ))}
                 </ul>
                 <div className="lang-switch">

@@ -4,15 +4,64 @@ import Technology from "../../components/technology/Technology.tsx";
 import {useLanguage} from "../../context/language-context.tsx";
 import type {SectionProps} from "../../types/section-props.ts";
 import SectionWrapper from "../../components/layout/SectionLayout.tsx";
+import {motion} from 'motion/react';
+import {stagger} from "motion";
 
+const mainVariant = {
+    hidden: {
+        opacity: 0,
+        x: 200,
+    },
+    visible: {
+        opacity: 1,
+        x: 0,
+        transition: {
+            duration: 2,
+            delay: 0.2,
+            ease: 'easeIn',
+        }
+    },
+};
+
+const listVariant = {
+    hidden: {
+    },
+    visible: {
+        transition: {
+            delay: 5,
+            delayChildren: stagger(0.5),
+        }
+    },
+}
+const itemVariant = {
+    hidden: {
+        opacity: 0,
+        y: 20,
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: .5,
+            type: 'spring',
+            stiffness: 150,
+        }
+    },
+};
 const Hero = (_: SectionProps) => {
     const { language } = useLanguage();
     return(
-        <div className="w-full h-full flex justify-center items-start flex-col">
+        <motion.div
+            variants={mainVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="w-full h-full flex justify-center items-start flex-col"
+        >
             <p className="text-accent font-code terminal-cursor md:text-sm text-xs">$ whoami</p>
-            <p className="font-heading leading-none md:text-6xl text-4xl">
+            <h1 className="font-heading leading-none md:text-6xl text-4xl">
                 Eavorschi Robert Daniel
-            </p>
+            </h1>
             <p className="leading-none font-heading text-accent italic md:text-6xl text-4xl">
                 Tech Lead & Full Stack Developer.
             </p>
@@ -34,15 +83,23 @@ const Hero = (_: SectionProps) => {
                     )
             }
 
-            <div className="flex flex-wrap gap-4 mt-8">
-                {technologies.map((technology) => (
-                    <span key={technology}>
+            <motion.div
+                variants={listVariant}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                staggered={true}
+                className="flex flex-wrap gap-4 mt-8">
+                {technologies.map((technology, index) => (
+                    <motion.span
+                        variants={itemVariant}
+                        key={technology}>
                       <Technology title={technology}/>
-                    </span>
+                    </motion.span>
 
                 ))}
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     )
 }
 export default SectionWrapper(Hero, 'hero');
