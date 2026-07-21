@@ -4,44 +4,93 @@ import {useLanguage} from "../../context/language-context.tsx";
 import SectionTitle from "../../components/section-title/SectionTitle.tsx";
 import type {SectionProps} from "../../types/section-props.ts";
 import {aboutJson} from "../../constants/about-json.ts";
-import type {JsonContent} from "../../types/about-json.type.ts";
 import SectionWrapper from "../../components/layout/SectionLayout.tsx";
+import {useRef} from "react";
+import {useInView} from "motion/react";
+import {useTerminalTypewriter} from "../../utils/use-terminal-typewriter.ts";
 
 const About = ({index, italianTitle, englishTitle}: SectionProps) => {
     const {language} = useLanguage();
+    const terminalRef = useRef<HTMLPreElement>(null);
+    const inView = useInView(terminalRef, {once: true, amount: 0.4});
+
+    const items = aboutJson[0].data;
+    const lines = [
+        '// profile.ts',
+        'const dev = {',
+        ...items.map((item, i) => {
+            const open = item.type === 'list' ? '[' : '';
+            const close = item.type === 'list' ? ']' : '';
+            const comma = i < items.length - 1 ? ',' : '';
+            return `${item.title}: ${open}'${item.content}'${close}${comma}`;
+        }),
+        '};',
+    ];
+
+    const {isLineTyped, isLineActive, typedLength} = useTerminalTypewriter(lines, {
+        active: inView,
+        speed: 14,
+        lineDelay: 120,
+        startDelay: 300,
+    });
+
     return(
         <div>
             <SectionTitle title={language === 'ita' ? `${index} - ${italianTitle}` : `${index} - ${englishTitle}`}  subtitle={'About me'}/>
             <div className="w-full flex flex-col justify-between items-start gap-4 lg:gap-12 lg:flex-row">
                 <div className="w-full lg:w-1/2">
                     <Terminal>
-                        <pre className="px-4
+                        <pre ref={terminalRef} className="px-4
                             font-code
                             whitespace-pre-wrap
                             wrap-break-word
                             overflow-hidden"
                                 >
-                            <p className="text-muted">// profile.ts</p>
-                            <span className="flex gap-2">
-                                <p className="text-accent">const</p>
-                                <p className="text-panel">dev = {'{'}</p>
-                            </span>
-                                    {aboutJson[0].data.map((item: JsonContent, i: number) => (
-                                        <div className="flex flex-wrap gap-2" key={i}>
-                                            <p className="text-panel pl-4">{item.title}:</p>
-                                            {item.type === 'list' && (
-                                                <p className="text-panel">[</p>
-                                            )}
-                                            <p className="text-string wrap-break-word">{"'"+item.content+"'"}</p>
-                                            {item.type === 'list' && (
-                                                <p className="text-panel">]</p>
-                                            )}
-                                            {i < (aboutJson.length - 1) && (
-                                                <p className="text-panel">,</p>
-                                            )}
-                                        </div>
-                                    ))}
-                                    <p className="text-panel">{'};'}</p>
+                            {lines.map((line, i) => {
+                                if (!isLineTyped(i) && !isLineActive(i)) return null;
+
+                                if (!isLineTyped(i)) {
+                                    return (
+                                        <p key={i} className={i === 0 ? "text-muted" : "text-terminal-fg"}>
+                                            {line.slice(0, typedLength(i))}
+                                            <em className="text-accent terminal-cursor"></em>
+                                        </p>
+                                    );
+                                }
+
+                                if (i === 0) {
+                                    return <p key={i} className="text-muted">{line}</p>;
+                                }
+                                if (i === 1) {
+                                    return (
+                                        <span key={i} className="flex gap-2">
+                                            <p className="text-accent">const</p>
+                                            <p className="text-panel">dev = {'{'}</p>
+                                        </span>
+                                    );
+                                }
+                                if (i === lines.length - 1) {
+                                    return <p key={i} className="text-panel">{'};'}</p>;
+                                }
+
+                                const item = items[i - 2];
+                                const isLast = i - 2 === items.length - 1;
+                                return (
+                                    <div className="flex flex-wrap gap-2" key={i}>
+                                        <p className="text-panel pl-4">{item.title}:</p>
+                                        {item.type === 'list' && (
+                                            <p className="text-panel">[</p>
+                                        )}
+                                        <p className="text-string wrap-break-word">{"'"+item.content+"'"}</p>
+                                        {item.type === 'list' && (
+                                            <p className="text-panel">]</p>
+                                        )}
+                                        {!isLast && (
+                                            <p className="text-panel">,</p>
+                                        )}
+                                    </div>
+                                );
+                            })}
                         </pre>
                     </Terminal>
                 </div>

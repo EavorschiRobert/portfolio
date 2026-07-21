@@ -3,9 +3,21 @@ import {useLanguage} from "../../context/language-context.tsx";
 import './Contact.css';
 import Terminal from "../../components/terminal/Terminal.tsx";
 import SectionWrapper from "../../components/layout/SectionLayout.tsx";
+import {useRef} from "react";
+import {motion, useInView} from "motion/react";
+import {useTerminalTypewriter} from "../../utils/use-terminal-typewriter.ts";
 
 const Contact = ({index, italianTitle, englishTitle}: SectionProps) => {
     const {language} = useLanguage();
+    const terminalRef = useRef<HTMLSpanElement>(null);
+    const inView = useInView(terminalRef, {once: true, amount: 0.5});
+
+    const command = language === 'ita'
+        ? 'send-email --to robert --subject "Ciao!"'
+        : 'send-email --to robert --subject "Hello!"';
+
+    const {done, typedLength} = useTerminalTypewriter([command], {active: inView, speed: 28, startDelay: 200});
+
     return (
         <div className="
         h-full w-full flex flex-col
@@ -35,38 +47,34 @@ const Contact = ({index, italianTitle, englishTitle}: SectionProps) => {
             </div>
             <div className="w-full lg:w-1/2">
                 <Terminal>
-                    <span className="font-code p-4">
+                    <span ref={terminalRef} className="font-code p-4">
                         <span className="text-terminal-fg flex gap-2 break-word">
                             <p className="text-accent">$</p>
-                            {language === 'ita'
-                                ? (
-                                    <p>
-                                        send-email --to robert --subject "Ciao!"
-                                        <em className="text-accent terminal-cursor"></em>
-                                    </p>
-                                )
-                                : (
-                                    <p>
-                                        send-email --to robert --subject "Hello!"
-                                        <em className="text-accent terminal-cursor"></em>
-                                    </p>
-                                )}
-
+                            <p>
+                                {command.slice(0, typedLength(0))}
+                                <em className="text-accent terminal-cursor"></em>
+                            </p>
                         </span>
-                        {language === 'ita'
-                        ? (
-                            <>
-                                <p className="text-muted">Apertura del client di posta...</p>
-                                <a className="send-mail text-string cursor-pointer" href="mailto:eavorschirobertdaniel@gmail.com">→ esegui: eavorschirobertdaniel@gmail.com</a>
-                            </>
-                            )
-                        : (
-                            <>
-                                <p className="text-muted">Opening mail client…</p>
-                                <a className="send-mail text-string cursor-pointer" href="mailto:eavorschirobertdaniel@gmail.com">→ run: eavorschirobertdaniel@gmail.com</a>
-                            </>
-                            )}
-
+                        {done && (
+                            <motion.div
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                transition={{duration: .4}}
+                            >
+                                <p className="text-muted">
+                                    {language === 'ita' ? 'Apertura del client di posta...' : 'Opening mail client…'}
+                                </p>
+                                <motion.a
+                                    initial={{opacity: 0}}
+                                    animate={{opacity: 1}}
+                                    transition={{duration: .4, delay: .35}}
+                                    className="send-mail text-string cursor-pointer"
+                                    href="mailto:eavorschirobertdaniel@gmail.com"
+                                >
+                                    {language === 'ita' ? '→ esegui: eavorschirobertdaniel@gmail.com' : '→ run: eavorschirobertdaniel@gmail.com'}
+                                </motion.a>
+                            </motion.div>
+                        )}
                     </span>
                 </Terminal>
             </div>
