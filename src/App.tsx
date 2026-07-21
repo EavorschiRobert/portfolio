@@ -59,7 +59,7 @@ function App() {
         <LanguageProvider>
             <div className="bg-background w-full h-full">
                 <ProgressBar />
-                <div className="px-12 py-4">
+                <div>
                     <Navbar/>
                 </div>
                 {sections.map((section, index) => {

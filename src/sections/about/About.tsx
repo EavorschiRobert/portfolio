@@ -5,6 +5,7 @@ import SectionTitle from "../../components/section-title/SectionTitle.tsx";
 import type {SectionProps} from "../../types/section-props.ts";
 import {aboutJson} from "../../constants/about-json.ts";
 import SectionWrapper from "../../components/layout/SectionLayout.tsx";
+import CounterItem from "../../components/counter-item/CounterItem.tsx";
 import {useRef} from "react";
 import {useInView} from "motion/react";
 import {useTerminalTypewriter} from "../../utils/use-terminal-typewriter.ts";
@@ -13,6 +14,8 @@ const About = ({index, italianTitle, englishTitle}: SectionProps) => {
     const {language} = useLanguage();
     const terminalRef = useRef<HTMLPreElement>(null);
     const inView = useInView(terminalRef, {once: true, amount: 0.4});
+    const countersRef = useRef<HTMLDivElement>(null);
+    const countersInView = useInView(countersRef, {once: true, amount: 0.4});
 
     const items = aboutJson[0].data;
     const lines = [
@@ -134,17 +137,14 @@ const About = ({index, italianTitle, englishTitle}: SectionProps) => {
 
                     </span>
 
-                    <div className="
+                    <div ref={countersRef} className="
                             flex
                             flex-wrap
                           justify-between
                           gap-8"
                     >
                         {counterAttivita.find(item => item.location === language)?.data.map((item, index) => (
-                            <span className="border-t border-line" key={index}>
-                                    <p className="text-accent text-2xl md:text-4xl font-heading font-bold mt-4">{item.title}</p>
-                                    <p className="break-all text-sm md:text-xl">{item.content}</p>
-                            </span>
+                            <CounterItem key={index} title={item.title} content={item.content} active={countersInView}/>
                         ))}
                     </div>
                 </div>

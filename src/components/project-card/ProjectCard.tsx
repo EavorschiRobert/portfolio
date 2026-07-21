@@ -1,6 +1,7 @@
 import type {ProjectViewType} from "../../types/project-view.type.ts";
 import './ProjectCard.css';
 import {useLanguage} from "../../context/language-context.tsx";
+import {motion} from 'motion/react';
 
 export const ProjectCard = ({project}: {project: ProjectViewType}) => {
     const {language} = useLanguage();
@@ -10,19 +11,19 @@ export const ProjectCard = ({project}: {project: ProjectViewType}) => {
         }
         return project.type === 'pro' ? 'PROFESSIONAL' : 'PERSONAL';
     }
-    // function randomColor() {
-    //     return `hsl(${Math.random() * 360} 80% 60%)`;
-    // }
-    // const style = {
-    //     background: `linear-gradient(
-    //     135deg,
-    //     ${randomColor()},
-    //     ${randomColor()},
-    //     ${randomColor()}
-    // )`
-    // };
+
     return(
-        <div id="work-card" className="bg-panel border flex flex-col h-full" >
+        <motion.div
+            whileHover={{
+                scale: 1.09
+            }}
+            animate={{
+                transition: {
+                    type: "spring",
+                    stiffness: 500,
+                }
+            }}
+            id="work-card" className="bg-panel border flex flex-col h-full" >
             <span className="cover  p-4 w-full flex items-start justify-between">
                 <p className="text-terminal-bg text-[.5rem]">{getProjectType()}</p>
                 <p className="text-terminal-bg text-[.5rem]">{project.fromDate} {project.toDate ? `- ${project.toDate}` : 'Presente'}</p>
@@ -38,6 +39,6 @@ export const ProjectCard = ({project}: {project: ProjectViewType}) => {
                         key={item}>{item}</p>
                 ))}
             </span>
-        </div>
+        </motion.div>
     )
 }

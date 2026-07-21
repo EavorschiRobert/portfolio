@@ -13,7 +13,7 @@ const listVariant: Variants = {
     visible: {
         transition: {
             delay: 5,
-            delayChildren: stagger(0.5),
+            delayChildren: stagger(0.3),
         }
     },
 }

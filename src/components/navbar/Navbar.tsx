@@ -2,13 +2,31 @@ import './Navbar.css';
 import {navbarLinks} from "../../constants/navbar-links.ts";
 import Hamburger from "../Hamburger/Hamburger.tsx";
 import {useLanguage} from "../../context/language-context.tsx";
-import {motion} from 'motion/react';
+import {motion, useMotionValueEvent, useScroll} from 'motion/react';
+import {useState} from "react";
 
 const Navbar = () => {
+    const [scrolled, setScrolled] = useState(false);
     const { language, setLanguage } = useLanguage();
+    const { scrollY } = useScroll();
+
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        setScrolled(latest > 30);
+    });
 
     return (
-        <nav>
+        <motion.nav
+            animate={{
+                // height: scrolled ? 64 : 80,
+                // paddingInline: scrolled ? 24 : 48,
+                marginTop: scrolled ? -15 : 0,
+                // paddingBlock: scrolled ? 12 : 20,
+            }}
+            transition={{
+                duration: 0.3,
+                ease: "easeOut",
+            }}
+        >
             <span className="font-bold flex heading">
                 <p>
                     robertdaniel
@@ -40,7 +58,7 @@ const Navbar = () => {
             {/* Mobile */}
             <Hamburger/>
 
-        </nav>
+        </motion.nav>
     )
 }
 export default Navbar;

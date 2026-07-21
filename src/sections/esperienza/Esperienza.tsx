@@ -16,7 +16,7 @@ const Esperienza = ({index, italianTitle, englishTitle}: SectionProps) => {
         <div className="w-full">
             <SectionTitle title={language === 'ita' ? `${index} - ${italianTitle}` : `${index} - ${englishTitle}`}  subtitle={'Experience'}/>
             {experiences.find(item => item.location === language)?.data.map((item, i) => (
-                <Card key={i}>
+                <Card key={i} animation={true}>
                     <div className="flex-col lg:flex-row items-center justify-between">
                         <div className="flex items-center gap-2">
                             <span className="">
